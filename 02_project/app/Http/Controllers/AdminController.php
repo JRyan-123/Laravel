@@ -9,7 +9,9 @@ use App\Models\User;
 class AdminController extends Controller
 {
     public function AdminDashboard() {
-        return view('admin.index');
+          $id = Auth::user()->id;
+        $profileData = User::find($id);
+        return view('admin.index', compact('profileData'));
     }
     // End Method
 
@@ -56,13 +58,18 @@ class AdminController extends Controller
 
         if ($request->file('photo')) {
             $file = $request->file('photo');
+            @unlink(public_path('upload/admin_images/'.$data->photo));
             $filename = time(). "." .$file->getClientOriginalName();
             $file->move(public_path('upload/admin_images'), $filename);
             $data->photo = $filename;
         }
         
         $data->save();
+        $notification = array(
+            'message' => 'Successfully updated',
+            'alert-type' => 'success'
+        );
 
-        return redirect()->back();
+        return redirect()->back()->with($notification);
     }
 }

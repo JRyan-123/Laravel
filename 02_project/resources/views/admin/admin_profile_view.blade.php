@@ -56,7 +56,7 @@
             <div class="card">
               <div class="card-body">
 
-					<h6 class="card-title">Basic Form</h6>
+					<h6 class="card-title">UPDATE ADMIN PROFILE</h6>
 
 					<form class="forms-sample" action="{{ route('admin.profile.store') }}" method="post" enctype="multipart/form-data">
 						@csrf
@@ -90,8 +90,8 @@
 		                    
 	                  	</div>
 	                  	
-						<button type="submit" class="btn btn-primary me-2">Submit</button>
-						<button class="btn btn-secondary">Cancel</button>
+						<button type="submit" class="btn btn-primary me-2">Save changes</button>
+						
 						
 					</form>
 
