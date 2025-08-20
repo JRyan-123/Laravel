@@ -6,100 +6,131 @@
 
 				<ul class="sidebar-nav">
 					<li class="sidebar-header">
-						Pages
+						Main
 					</li>
 
-					<li class="sidebar-item">
+					<li class="sidebar-item @active('admin.dashboard')">
 						<a class="sidebar-link" href="{{ route('admin.dashboard') }}">
-              <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Dashboard</span>
-            </a>
+			              <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Dashboard</span>
+			            </a>
 					</li>
 
-					<li class="sidebar-item">
-						<a class="sidebar-link" href="pages-profile.html">
-              <i class="align-middle" data-feather="user"></i> <span class="align-middle">Profile</span>
-            </a>
+					<li class="sidebar-item  @active('admin.settings')">
+						<a class="sidebar-link" href="{{ route('admin.settings') }}">
+			              <i class="align-middle" data-feather="settings"></i> <span class="align-middle">Settings</span>
+			            </a>
 					</li>
 
-					<li class="sidebar-item">
-						<a class="sidebar-link" href="pages-sign-in.html">
-              <i class="align-middle" data-feather="log-in"></i> <span class="align-middle">Sign In</span>
-            </a>
+					
+					
+
+					<li class="sidebar-header">
+						Category
 					</li>
 
-					<li class="sidebar-item">
-						<a class="sidebar-link" href="pages-sign-up.html">
-              <i class="align-middle" data-feather="user-plus"></i> <span class="align-middle">Sign Up</span>
-            </a>
+					<li class="sidebar-item @active('admin.category.create')">
+						<a class="sidebar-link" href="{{ route('admin.category.create') }}">
+              				<i class="align-middle" data-feather="plus"></i> <span class="align-middle">Create</span>
+            			</a>
 					</li>
 
-					<li class="sidebar-item active">
-						<a class="sidebar-link" href="pages-blank.html">
-              <i class="align-middle" data-feather="book"></i> <span class="align-middle">Blank</span>
-            </a>
+					<li class="sidebar-item @active('admin.category.manage')">
+						<a class="sidebar-link" href="{{ route('admin.category.manage') }}">
+              				<i class="align-middle" data-feather="list"></i> <span class="align-middle">Manage</span>
+            			</a>
+					</li>
+
+				
+
+					
+					<li class="sidebar-header">
+						Sub-Category
+					</li>
+
+					<li class="sidebar-item @active('admin.subcategory.create')">
+						<a class="sidebar-link" href="{{ route('admin.subcategory.create') }}">
+              				<i class="align-middle" data-feather="plus"></i> <span class="align-middle">Create</span>
+            			</a>
+					</li>
+
+					<li class="sidebar-item @active('admin.subcategory.manage')">
+						<a class="sidebar-link" href="{{ route('admin.subcategory.manage') }}">
+              				<i class="align-middle" data-feather="list"></i> <span class="align-middle">Manage</span>
+            			</a>
+					</li>
+
+
+
+
+					<li class="sidebar-header">
+						Attribute
+					</li>
+
+					<li class="sidebar-item @active('admin.product_attribute.create')">
+						<a class="sidebar-link" href="{{ route('admin.product_attribute.create') }}">
+              				<i class="align-middle" data-feather="plus"></i> <span class="align-middle">Create</span>
+            			</a>
+					</li>
+
+					<li class="sidebar-item @active('admin.product_attribute.manage')">
+						<a class="sidebar-link" href="{{ route('admin.product_attribute.manage') }}">
+              				<i class="align-middle" data-feather="list"></i> <span class="align-middle">Manage</span>
+            			</a>
+					</li>
+
+
+
+					<li class="sidebar-header">
+						Discount
+					</li>
+
+					<li class="sidebar-item @active('admin.discount.create')">
+						<a class="sidebar-link" href="{{ route('admin.discount.create') }}">
+              				<i class="align-middle" data-feather="plus"></i> <span class="align-middle">Create</span>
+            			</a>
+					</li>
+
+					<li class="sidebar-item @active('admin.discount.manage')">
+						<a class="sidebar-link" href="{{ route('admin.discount.manage') }}">
+              				<i class="align-middle" data-feather="list"></i> <span class="align-middle">Manage</span>
+            			</a>
 					</li>
 
 					<li class="sidebar-header">
-						Tools & Components
+						Product
 					</li>
 
-					<li class="sidebar-item">
-						<a class="sidebar-link" href="ui-buttons.html">
-              <i class="align-middle" data-feather="square"></i> <span class="align-middle">Buttons</span>
-            </a>
+					<li class="sidebar-item @active('admin.product.product')">
+						<a class="sidebar-link" href="{{ route('admin.product.product') }}">
+              				<i class="align-middle" data-feather="shopping-bag"></i> <span class="align-middle">Manage Product</span>
+            			</a>
 					</li>
 
-					<li class="sidebar-item">
-						<a class="sidebar-link" href="ui-forms.html">
-              <i class="align-middle" data-feather="check-square"></i> <span class="align-middle">Forms</span>
-            </a>
+					<li class="sidebar-item @active('admin.product.review')">
+						<a class="sidebar-link" href="{{ route('admin.product.review') }}">
+              				<i class="align-middle" data-feather="star"></i> <span class="align-middle">Manage Review</span>
+            			</a>
 					</li>
 
-					<li class="sidebar-item">
-						<a class="sidebar-link" href="ui-cards.html">
-              <i class="align-middle" data-feather="grid"></i> <span class="align-middle">Cards</span>
-            </a>
-					</li>
-
-					<li class="sidebar-item">
-						<a class="sidebar-link" href="ui-typography.html">
-              <i class="align-middle" data-feather="align-left"></i> <span class="align-middle">Typography</span>
-            </a>
-					</li>
-
-					<li class="sidebar-item">
-						<a class="sidebar-link" href="icons-feather.html">
-              <i class="align-middle" data-feather="coffee"></i> <span class="align-middle">Icons</span>
-            </a>
-					</li>
 
 					<li class="sidebar-header">
-						Plugins & Addons
+						History
 					</li>
 
-					<li class="sidebar-item">
-						<a class="sidebar-link" href="charts-chartjs.html">
-              <i class="align-middle" data-feather="bar-chart-2"></i> <span class="align-middle">Charts</span>
-            </a>
+					<li class="sidebar-item @active('admin.cart.history')">
+						<a class="sidebar-link" href="{{ route('admin.cart.history') }}">
+              				<i class="align-middle" data-feather="shopping-bag"></i> <span class="align-middle">Cart</span>
+            			</a>
 					</li>
 
-					<li class="sidebar-item">
-						<a class="sidebar-link" href="maps-google.html">
-              <i class="align-middle" data-feather="map"></i> <span class="align-middle">Maps</span>
-            </a>
+					<li class="sidebar-item @active('admin.order.history')">
+						<a class="sidebar-link" href="{{ route('admin.order.history') }}">
+              				<i class="align-middle" data-feather="star"></i> <span class="align-middle">Order</span>
+            			</a>
 					</li>
+				
 				</ul>
 
-				<div class="sidebar-cta">
-					<div class="sidebar-cta-content">
-						<strong class="d-inline-block mb-2">Upgrade to Pro</strong>
-						<div class="mb-3 text-sm">
-							Are you looking for more components? Check out our premium version.
-						</div>
-						<div class="d-grid">
-							<a href="upgrade-to-pro.html" class="btn btn-primary">Upgrade to Pro</a>
-						</div>
-					</div>
-				</div>
+			
 			</div>
 		</nav>
