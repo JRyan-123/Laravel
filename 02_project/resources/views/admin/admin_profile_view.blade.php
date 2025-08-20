@@ -86,7 +86,7 @@
 							<input type="file" class="form-control" name="photo" id="image" autocomplete="off" placeholder="Password">
 						</div>
 						<div class="mb-3">
-		                    <img class="wd-80 rounded-circle" id="showImage" src="{{ (!empty($profileData->photo)) ? url('upload/admin_images/'.$profileData->photo) : url('upload/no_image.jpg') }}" alt="profile">
+		                    <img class="w-80 rounded-circle" id="showImage" src="{{ (!empty($profileData->photo)) ? url('upload/admin_images/'.$profileData->photo) : url('upload/no_image.jpg') }}" alt="profile">
 		                    
 	                  	</div>
 	                  	
