@@ -1,8 +1,8 @@
-@extends('admin.layouts.layout')
-@section('title', 'Admin-Dashboard')
+@extends('customer.layouts.layout')
+@section('title', 'Customer-Dashboard')
 
-@section('vendor_content')
-	<h1 class="h3 mb-3">Admin Dashboard</h1>
+@section('customer_content')
+	<h1 class="h3 mb-3">Customer Dashboard</h1>
 
 	<div class="row">
 		<div class="col-12">
@@ -16,4 +16,4 @@
 		</div>
 	</div>
 
-@endsection
+@Endsection

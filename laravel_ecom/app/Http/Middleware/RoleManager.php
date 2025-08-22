@@ -29,9 +29,9 @@ class RoleManager
         ];
 
         $redirectRoutes = [
-            0 => 'admin',
-            1 => 'vendor',
-            2 => 'dashboard',
+            0 => 'admin.dashboard',
+            1 => 'vendor.dashboard',
+            2 => 'customer.dashboard',
         ];
 
         if ($roles[$role] === $authUserRole) {

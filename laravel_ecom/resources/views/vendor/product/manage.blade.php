@@ -1,8 +1,8 @@
-@extends('admin.layouts.layout')
-@section('title', 'Admin-Dashboard')
+@extends('vendor.layouts.layout')
+@section('title', 'Manage Product')
 
 @section('vendor_content')
-	<h1 class="h3 mb-3">Admin Dashboard</h1>
+	<h1 class="h3 mb-3">Manage Product</h1>
 
 	<div class="row">
 		<div class="col-12">

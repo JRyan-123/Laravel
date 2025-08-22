@@ -35,7 +35,7 @@ class AuthenticatedSessionController extends Controller
         }elseif($authUserRole == 1) {
             $url = 'vendor.dashboard';
         }else{
-            $url = 'dashboard';
+            $url = 'customer.dashboard';
         }
 
 

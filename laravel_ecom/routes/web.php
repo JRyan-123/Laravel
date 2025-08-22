@@ -2,12 +2,20 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+
+
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\SubCategoryController;
 use App\Http\Controllers\Admin\ProductAttributeController;
 use App\Http\Controllers\Admin\ProductDiscountController;
 use App\Http\Controllers\Admin\ProductController;
+
+use App\Http\Controllers\Vendor\VendorController;
+use App\Http\Controllers\Vendor\VendorProductController;
+use App\Http\Controllers\Vendor\StoreController;
+
+use App\Http\Controllers\Customer\CustomerController;
 
 
 Route::get('/', function () {
@@ -28,6 +36,7 @@ Route::prefix('admin')->name('admin.')->middleware('rolemanager:admin')->group(f
          Route::get('manage/stores', 'manage_store')->name('manage.stores');
          Route::get('cart/history', 'cart_history')->name('cart.history');
          Route::get('order/history', 'order_history')->name('order.history');
+         Route::get('logout', 'logout')->name('logout');
     });
     // end Admin contrller
 
@@ -66,8 +75,49 @@ Route::prefix('admin')->name('admin.')->middleware('rolemanager:admin')->group(f
     });
      // End subcategory controller
 
+});
+//End admin
+
+
+Route::prefix('vendor')->name('vendor.')->middleware('rolemanager:vendor')->group(function() {
+
+    Route::controller(VendorController::class)->group(function() {
+        Route::get('dashboard', 'index')->name('dashboard');
+        Route::get('order/history', 'order_history')->name('order.history');
+        Route::get('logout', 'logout')->name('logout');
+    });
+    // End MAIN controller
+
+    Route::prefix('product')->name('product.')->controller(VendorProductController::class)->group(function (){
+        Route::get('create', 'create_product')->name('create');
+        Route::get('manage', 'manage_product')->name('manage');
+    });
+    // End Product controller
+
+    Route::prefix('store')->name('store.')->controller(StoreController::class)->group(function (){
+        Route::get('create', 'create_store')->name('create');
+        Route::get('manage', 'manage_store')->name('manage');
+    });
+    // End Storre Cointroller
+});
+// End Vendor
+
+
+Route::prefix('customer')->name('customer.')->middleware('rolemanager:customer')->group(function() {
+
+    Route::controller(CustomerController::class)->group(function() {
+        Route::get('dashboard', 'index')->name('dashboard');
+        Route::get('order/history', 'order_history')->name('order.history');
+        Route::get('payment/setting', 'payment')->name('payment.setting');
+        Route::get('affiliate', 'affiliate')->name('affiliate');
+        Route::get('logout', 'logout')->name('logout');
+    });
+    // End MAIN controller
+
    
 });
+// End customer
+
 
 
 Route::middleware('auth')->group(function () {
