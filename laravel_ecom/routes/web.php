@@ -17,6 +17,8 @@ use App\Http\Controllers\Vendor\StoreController;
 
 use App\Http\Controllers\Customer\CustomerController;
 
+use App\Http\Controllers\MasterCategoryController;
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -30,13 +32,13 @@ Route::get('/dashboard', function () {
 Route::prefix('admin')->name('admin.')->middleware('rolemanager:admin')->group(function() {
     
     Route::controller(AdminController::class)->group(function() {
-         Route::get('dashboard', 'index')->name('dashboard');
-         Route::get('settings', 'setting')->name('settings');
-         Route::get('manage/users', 'manage_user')->name('manage.users');
-         Route::get('manage/stores', 'manage_store')->name('manage.stores');
-         Route::get('cart/history', 'cart_history')->name('cart.history');
-         Route::get('order/history', 'order_history')->name('order.history');
-         Route::get('logout', 'logout')->name('logout');
+        Route::get('dashboard', 'index')->name('dashboard');
+        Route::get('settings', 'setting')->name('settings');
+        Route::get('manage/users', 'manage_user')->name('manage.users');
+        Route::get('manage/stores', 'manage_store')->name('manage.stores');
+        Route::get('cart/history', 'cart_history')->name('cart.history');
+        Route::get('order/history', 'order_history')->name('order.history');
+        Route::get('logout', 'logout')->name('logout');
     });
     // end Admin contrller
 
@@ -74,6 +76,18 @@ Route::prefix('admin')->name('admin.')->middleware('rolemanager:admin')->group(f
         Route::get('review/manage', 'manage_product_review')->name('review');
     });
      // End subcategory controller
+
+
+      Route::controller(MasterCategoryController::class)->group(function() {
+        Route::post('category/store', 'cat_store')->name('category.store');
+        Route::get('category/show/{id}', 'cat_show')->name('category.show');
+        Route::put('category/update/{id}', 'cat_update')->name('category.update');
+        Route::delete('category/delete/{id}', 'cat_delete')->name('category.delete');
+        
+    });
+     // End Master Category controller
+
+
 
 });
 //End admin
