@@ -152,7 +152,14 @@
 								<a class="dropdown-item" href="index.html"><i class="align-middle me-1" data-feather="settings"></i> Settings & Privacy</a>
 								<a class="dropdown-item" href="#"><i class="align-middle me-1" data-feather="help-circle"></i> Help Center</a>
 								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" href="{{ route('customer.logout') }}">Log out</a>
+								<form method="POST" action="{{ route('logout') }}">
+				                    @csrf
+				                    <div class="  d-flex gap-2">
+				                    
+				                    	<input type="submit" class="px-5 border-0 shadow-none w-100 text-start text-secondary bg-transparent" value="Logout" >
+				                    </div>
+				                    
+				                </form>
 							</div>
 						</li>
 					</ul>

@@ -38,7 +38,7 @@ Route::prefix('admin')->name('admin.')->middleware('rolemanager:admin')->group(f
         Route::get('manage/stores', 'manage_store')->name('manage.stores');
         Route::get('cart/history', 'cart_history')->name('cart.history');
         Route::get('order/history', 'order_history')->name('order.history');
-        Route::get('logout', 'logout')->name('logout');
+      
     });
     // end Admin contrller
 
@@ -108,7 +108,7 @@ Route::prefix('vendor')->name('vendor.')->middleware('rolemanager:vendor')->grou
     Route::controller(VendorController::class)->group(function() {
         Route::get('dashboard', 'index')->name('dashboard');
         Route::get('order/history', 'order_history')->name('order.history');
-        Route::get('logout', 'logout')->name('logout');
+ 
     });
     // End MAIN controller
 
@@ -134,7 +134,7 @@ Route::prefix('customer')->name('customer.')->middleware('rolemanager:customer')
         Route::get('order/history', 'order_history')->name('order.history');
         Route::get('payment/setting', 'payment')->name('payment.setting');
         Route::get('affiliate', 'affiliate')->name('affiliate');
-        Route::get('logout', 'logout')->name('logout');
+
     });
     // End MAIN controller
 
