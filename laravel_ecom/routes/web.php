@@ -18,7 +18,7 @@ use App\Http\Controllers\Vendor\StoreController;
 use App\Http\Controllers\Customer\CustomerController;
 
 use App\Http\Controllers\MasterCategoryController;
-
+use App\Http\Controllers\MasterSubcategoryController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -78,14 +78,24 @@ Route::prefix('admin')->name('admin.')->middleware('rolemanager:admin')->group(f
      // End subcategory controller
 
 
-      Route::controller(MasterCategoryController::class)->group(function() {
-        Route::post('category/store', 'cat_store')->name('category.store');
-        Route::get('category/show/{id}', 'cat_show')->name('category.show');
-        Route::put('category/update/{id}', 'cat_update')->name('category.update');
-        Route::delete('category/delete/{id}', 'cat_delete')->name('category.delete');
+      Route::prefix('category')->name('category.')->controller(MasterCategoryController::class)->group(function() {
+        Route::post('/store', 'cat_store')->name('store');
+        Route::get('/show/{id}', 'cat_show')->name('show');
+        Route::put('/update/{id}', 'cat_update')->name('update');
+        Route::delete('/delete/{id}', 'cat_delete')->name('delete');
         
     });
      // End Master Category controller
+
+      Route::prefix('subcategory')->name('subcategory.')->controller(MasterSubcategoryController::class)->group(function() {
+        Route::post('store', 'subcat_store')->name('store');
+        Route::get('/show/{id}', 'subcat_show')->name('show');
+        Route::put('/update/{id}', 'subcat_update')->name('update');
+        Route::delete('/delete/{id}', 'subcat_delete')->name('delete');
+       
+        
+    });
+     // End Master SubCategory controller
 
 
 
