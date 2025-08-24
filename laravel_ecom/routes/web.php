@@ -126,6 +126,10 @@ Route::prefix('vendor')->name('vendor.')->middleware('rolemanager:vendor')->grou
     Route::prefix('store')->name('store.')->controller(StoreController::class)->group(function (){
         Route::get('create', 'create_store')->name('create');
         Route::get('manage', 'manage_store')->name('manage');
+        Route::post('dbstore', 'dbstore_store')->name('dbstore');
+        Route::get('/show/{id}', 'show_store')->name('show');
+        Route::put('/update/{id}', 'update_store')->name('update');
+        Route::delete('/delete/{id}', 'delete_store')->name('delete');
     });
     // End Storre Cointroller
 });
