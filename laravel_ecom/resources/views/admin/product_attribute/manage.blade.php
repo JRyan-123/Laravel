@@ -2,17 +2,40 @@
 @section('title', 'Manage Attribute')
 
 @section('admin_content')
-	<h1 class="h3 mb-3">Manage Attribute</h1>
-
-	<div class="row">
-		<div class="col-12">
-			<div class="card">
-				<div class="card-header">
-					<h5 class="card-title mb-0">Empty card</h5>
-				</div>
-				<div class="card-body">
-				</div>
-			</div>
+<div class="card">
+	<div class="card-header">
+		<h5 class="card-title mb-0">Manage Attribute</h5>
+	</div>
+	<div class="card-body">
+		<table class="table">
+		  <thead>
+		    <tr>
+		      <th scope="col">#</th>
+		      <th scope="col">Attribute</th>
+		      <th scope="col">Action</th>
+		      
+		    </tr>
+		  </thead>
+		  <tbody>
+		  	@foreach($attributes as $attribute)
+			  	 <tr>
+			      <th scope="row">{{ $attribute->id }}</th>
+			      <td>{{ $attribute->attribute_value }}</td>
+			      <td class="d-flex gap-2"><a href="{{ route('admin.product_attribute.show', $attribute->id ) }}" class="btn btn-info btn-sm">View</a>
+			      		<form action="{{ route('admin.product_attribute.delete', $attribute->id) }}" method="POST" onsubmit="return confirm('Are you sure?');">
+						    @csrf
+						    @method('DELETE')
+						    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+						</form>
+			      </td>
+			      
+			    </tr>
+		  	@endforeach
+		   
+		   
+		  </tbody>
+		</table>
+				
 		</div>
 	</div>
 

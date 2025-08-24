@@ -60,6 +60,11 @@ Route::prefix('admin')->name('admin.')->middleware('rolemanager:admin')->group(f
       Route::prefix('product_attribute')->name('product_attribute.')->controller(ProductAttributeController::class)->group(function() {
         Route::get('create', 'create_product_attr')->name('create');
         Route::get('manage', 'manage_product_attr')->name('manage');
+        Route::post('store', 'store_product_attr')->name('store');
+        Route::get('show/{id}', 'show_product_attr')->name('show');
+        Route::put('update/{id}', 'update_product_attr')->name('update');
+        Route::delete('delete/{id}', 'delete_product_attr')->name('delete');
+
     });
      // End subcategory controller
 
