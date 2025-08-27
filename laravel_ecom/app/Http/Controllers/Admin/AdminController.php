@@ -15,8 +15,10 @@ class AdminController extends Controller
     // End method
 
 
-    public function setting()
+    public function settings()
     {
+        $products = Product::all();
+        
         return view('admin.settings');
     }
     // end method

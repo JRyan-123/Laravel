@@ -2,18 +2,42 @@
 @section('title', 'Manage Product')
 
 @section('vendor_content')
-	<h1 class="h3 mb-3">Manage Product</h1>
+	
 
-	<div class="row">
-		<div class="col-12">
-			<div class="card">
-				<div class="card-header">
-					<h5 class="card-title mb-0">Empty card</h5>
-				</div>
-				<div class="card-body">
-				</div>
-			</div>
-		</div>
+<div class="card">
+	<div class="card-header">
+		<h5 class="card-title mb-0">Manage Product</h5>
 	</div>
-
+	<div class="card-body">
+		<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Category</th>
+      <th scope="col">Action</th>
+      
+    </tr>
+  </thead>
+  <tbody>
+  	@foreach( $products as $product )
+	  	 <tr>
+	      <th scope="row">{{ $product->id }}</th>
+	      <td>{{ $product->product_name }}</td>
+	      <td class="d-flex gap-2"><a href="{{ route('vendor.product.show', $product->id ) }}" class="btn btn-info btn-sm">View</a>
+	      		<form action="{{ route('vendor.product.delete', $product->id) }}" method="POST" onsubmit="return confirm('Are you sure?');">
+				    @csrf
+				    @method('DELETE')
+				    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+				</form>
+	      </td>
+	    </tr>
+	@endforeach
+  
+   
+   
+  </tbody>
+</table>
+		
+	</div>
+</div>
 @endsection

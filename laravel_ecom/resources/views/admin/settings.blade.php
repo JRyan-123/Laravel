@@ -1,19 +1,20 @@
 @extends('admin.layouts.layout')
-@section('title', 'Admin-Settings')
+@section('title', 'Homepage Settings')
 
 @section('admin_content')
-	<h1 class="h3 mb-3">Admin Settings</h1>
-
-	<div class="row">
-		<div class="col-12">
-			<div class="card">
-				<div class="card-header">
-					<h5 class="card-title mb-0">Empty card</h5>
-				</div>
-				<div class="card-body">
-				</div>
-			</div>
-		</div>
+<div class="card">
+	<div class="card-header">
+		<h5 class="card-title mb-0">Create Homepage Settings</h5>
 	</div>
+	<div class="card-body">
+		<form action="{{ route('admin.category.store')}}" method="POST" >
+			@csrf
+			<label for="" class="fw-bold mb-2">Category</label>
+			<input type="text" class="form-control p-2" placeholder="Enter category..." name="category_name">
 
+			<button type="submit" class="btn btn-primary rounded p-2 form-control mt-2">Submit</button>
+		</form>
+		
+	</div>
+</div>
 @endsection

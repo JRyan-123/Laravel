@@ -21,7 +21,7 @@ use App\Http\Controllers\MasterCategoryController;
 use App\Http\Controllers\MasterSubcategoryController;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home.index');
 });
 
 Route::get('/dashboard', function () {
@@ -33,7 +33,7 @@ Route::prefix('admin')->name('admin.')->middleware('rolemanager:admin')->group(f
     
     Route::controller(AdminController::class)->group(function() {
         Route::get('dashboard', 'index')->name('dashboard');
-        Route::get('settings', 'setting')->name('settings');
+        Route::get('settings', 'settings')->name('settings');
         Route::get('manage/users', 'manage_user')->name('manage.users');
         Route::get('manage/stores', 'manage_store')->name('manage.stores');
         Route::get('cart/history', 'cart_history')->name('cart.history');
@@ -120,6 +120,9 @@ Route::prefix('vendor')->name('vendor.')->middleware('rolemanager:vendor')->grou
     Route::prefix('product')->name('product.')->controller(VendorProductController::class)->group(function (){
         Route::get('create', 'create_product')->name('create');
         Route::get('manage', 'manage_product')->name('manage');
+        Route::post('store', 'store_product')->name('store');
+        Route::get('show/{id}', 'show_product')->name('show');
+        Route::post('delete/{id}', 'delete_product')->name('delete');
     });
     // End Product controller
 

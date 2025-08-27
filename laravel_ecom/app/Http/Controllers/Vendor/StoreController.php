@@ -33,7 +33,7 @@ class StoreController extends Controller
             'user_id' => Auth::id(),
         ]);
         
-        return view('vendor.store.manage')->with('success', 'Store name Created');
+        return redirect()->route('vendor.store.manage')->with('success', 'Store name Created');
     }
     // end methid
 
