@@ -143,9 +143,7 @@ Route::prefix('customer')->name('customer.')->middleware('rolemanager:customer')
 
     Route::controller(CustomerController::class)->group(function() {
         Route::get('dashboard', 'index')->name('dashboard');
-        Route::get('order/history', 'order_history')->name('order.history');
-        Route::get('payment/setting', 'payment')->name('payment.setting');
-        Route::get('affiliate', 'affiliate')->name('affiliate');
+        Route::get('product_view', 'product_view')->name('product_view');
 
     });
     // End MAIN controller

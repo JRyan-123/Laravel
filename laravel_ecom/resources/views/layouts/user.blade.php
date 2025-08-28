@@ -41,7 +41,13 @@
 
   <header id="header" class="header sticky-top">
 
- @include('layouts.partials.main-header')
+@if(Auth::check())
+    @include('layouts.partials.main-header')
+
+@else
+   @include('layouts.partials.header') 
+@endif
+
  @include('layouts.partials.navigation')
 
     <!-- Mobile Search Form -->

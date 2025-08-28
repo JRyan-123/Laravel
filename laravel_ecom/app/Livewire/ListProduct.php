@@ -14,12 +14,14 @@ class ListProduct extends Component
     public $subcategoryId;
     public $minPrice;
     public $maxPrice;
+    public $keyword;
    
     protected $listeners = [
         'filterUpdated' => 'refreshFilters',
         'priceUpdated' => 'refreshFilters',
         'categoryUpdated' => 'refreshFilters',
-        'clearFilters' => 'refreshFilters'
+        'clearFilters' => 'refreshFilters',
+        'searchUpdated'      => 'refreshFilters',
     ];
 
     public function mount()
@@ -28,11 +30,14 @@ class ListProduct extends Component
     }
 
     public function refreshFilters()
-    {
+    {   
         $this->categoryId = session('categoryId', null);
         $this->subcategoryId = session('subcategoryId', null);
         $this->minPrice = session('minPrice', null);
         $this->maxPrice = session('maxPrice', null);
+        $this->maxPrice = session('maxPrice', null);
+        $this->keyword = session('keyword', null);
+
         $this->resetPage(); // reset pagination when filters change
     }
 
@@ -56,6 +61,10 @@ class ListProduct extends Component
             $query->where('regular_price', '<=', $this->maxPrice);
         }
 
+        if (!empty($this->keyword)) {
+            $query->where('product_name', 'like', '%' . $this->keyword . '%')
+                ->orWhere('description', 'like', '%' . $this->keyword . '%');
+        }
         return view('livewire.list-product', [
             'products' => $query->paginate(12),
         ]);

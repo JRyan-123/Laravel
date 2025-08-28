@@ -6,8 +6,8 @@ use Livewire\Component;
 
 class FilterPrice extends Component
 {   
-    public $minPrice;
-    public $maxPrice;
+    public $minPrice = 0;
+    public $maxPrice = 500;
 
     public function mount()
     {

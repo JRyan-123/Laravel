@@ -10,40 +10,16 @@ class CustomerController extends Controller
 {
     public function index()
     {
-        return view('customer.dashboard');
+        return view('customer.index');
     }
     // end methid
 
 
-    public function order_history()
+    public function product_view()
     {
-        return view('customer.order_history');
+        return view('customer.product_view');
     }
     // end methid
 
-    public function payment()
-    {
-        return view('customer.payment');
-    }
-    // end methid
-
-
-    public function affiliate()
-    {
-        return view('customer.affiliate');
-    }
-    // end methid
-
-
-    public function logout(Request $request)
-    {
-        Auth::guard('web')->logout();
-
-        $request->session()->invalidate();
-
-        $request->session()->regenerateToken();
-
-        return redirect('/');
-    }
-    // end mrthod
+    
 }

@@ -11,14 +11,16 @@
           </a>
 
           <!-- Search -->
-          <form class="search-form desktop-search-form">
+         <!--  <form class="search-form desktop-search-form">
             <div class="input-group">
               <input type="text" class="form-control" placeholder="Search for products">
               <button class="btn" type="submit">
                 <i class="bi bi-search"></i>
               </button>
             </div>
-          </form>
+          </form> -->
+
+          @livewire('search-filter')
 
           <!-- Actions -->
           <div class="header-actions d-flex align-items-center justify-content-end">

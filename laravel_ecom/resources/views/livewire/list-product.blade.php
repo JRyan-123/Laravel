@@ -1,6 +1,8 @@
 <div class="row g-4">
     @forelse($products as $product)
+
     <div class="col-6 col-xl-4">
+        <a href="{{ route('customer.product_view') }}" class="text-decoration-none">
         <div class="product-card border shadow">
             <div class="product-image">
                 <img src="{{ asset('storage/' . optional($product->images->get(0))->image_path ?? 'placeholder.jpg') }}" class="main-image img-fluid" alt="Product">
@@ -30,7 +32,9 @@
                 </div>
             </div>
         </div>
+        </a>
     </div>
+
     @empty
     <div class="col-12 text-center py-5">
         <p>No products found.</p>

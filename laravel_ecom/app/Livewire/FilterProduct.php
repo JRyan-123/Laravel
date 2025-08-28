@@ -10,18 +10,9 @@ class FilterProduct extends Component
     public $categoryId      = null;
     public $subcategoryId   = null;
     
-    protected $listeners = ['filterUpdated' => 'refreshFromSession'];
+    protected $listeners = ['filterUpdated' => '$refresh'];
 
-    public function mount()
-    {
-        $this->refreshFromSession();
-    }
 
-    public function refreshFromSession()
-    {
-        $this->categoryId = session('categoryId', null);
-        $this->subcategoryId = session('subcategoryId', null);
-    }
     public function selectCategory($id)
     {
         $this->categoryId = $id;

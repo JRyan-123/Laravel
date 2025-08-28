@@ -11,14 +11,14 @@
                   <li style="cursor:pointer;opacity:.7;" 
                         wire:click='selectCategory({{$category->id}})'
                         class="text-decoration-none category-column p-2 mb-2 rounded cursor-pointer 
-                               {{ $categoryId == $category->id ? 'bg-dark text-white' : '' }}">
-                        {{ $category->category_name }}
+                               {{ session('categoryId') == $category->id ? 'bg-dark text-white' : '' }}">
+                        {{ $category->category_name  }}
                     </li>
                 
-               @if($categoryId === $category->id)
+               @if( session('categoryId') === $category->id)
                     <ul class="ms-3">
                         @foreach($category->subcategories as $subcategory)
-                            <li class="p-2 rounded {{ $subcategoryId == $subcategory->id ? 'bg-dark text-white' : 'hover:bg-light' }}" 
+                            <li class="p-2 rounded {{ session('subcategoryId') == $subcategory->id ? 'bg-dark text-white' : 'hover:bg-light' }}" 
                                 wire:click="selectSubcategory({{ $subcategory->id }})" 
                                 style="cursor:pointer;">
                                 {{ $subcategory->subcategory_name }}

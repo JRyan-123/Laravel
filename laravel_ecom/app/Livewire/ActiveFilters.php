@@ -9,7 +9,7 @@ use App\Models\Subcategory;
 class ActiveFilters extends Component
 {
     protected $listeners = [
-    'filterUpdated' => '$refresh', 
+    'filterUpdated' => '$refresh',
     ];
 
    public function removeFilter($key)
@@ -20,41 +20,48 @@ class ActiveFilters extends Component
 
     public function clearAll()
     {
-        session()->forget(['categoryId', 'subcategoryId', 'minPrice', 'maxPrice']);
+        session()->forget(['categoryId', 'subcategoryId', 'minPrice', 'maxPrice', 'keyword']);
         $this->dispatch('filterUpdated');
     }
 
     public function render()
     {   
         $filters = [];
-
+            if (session('keyword')) {
+                    $filters['keyword'] = [
+                        'name' =>"Searching for '". session('keyword'). "'",
+                    ];
+                }
             
-            if ($categoryId = session('categoryId')) {
-                    $category = Category::find($categoryId);
+            if (session('categoryId')) {
+                    $category = Category::find(session('categoryId'));
                     $filters['categoryId'] = [
-                    'name' => $category ? $category->category_name : 'Unknown',
+                    'name' =>  $category->category_name 
                     ];
                     
                 }
 
-             if ($subcategoryId = session('subcategoryId')) {
-                    $subcategory = Subcategory::find($subcategoryId);
+             if (session('subcategoryId')) {
+                    $subcategory = Subcategory::find(session('subcategoryId'));
                     $filters['subcategoryId'] = [
-                        'name' => $subcategory?->subcategory_name ?? 'Unknown',
+                        'name' => $subcategory->subcategory_name,
                     ];
                 }
 
-                if ($minPrice = session('minPrice')) {
+                if (session('minPrice')) {
                     $filters['minPrice'] = [
-                        'name' => "Min Price: $minPrice",
+                        'name' => "Min Price: ". session('minPrice'),
                     ];
                 }
 
-                if ($maxPrice = session('maxPrice')) {
+                if (session('maxPrice')) {
                     $filters['maxPrice'] = [
-                        'name' => "Max Price: $maxPrice",
+                        'name' => "Min Price: ". session('maxPrice'),
                     ];
                 }
+
+
+                
         return view('livewire.active-filters', compact('filters'));
     }
 }

@@ -49,7 +49,7 @@ class LoginRequest extends FormRequest
                 ->first();
 
 
-        if (!$user && !Hash::check($this->pasword, $user->password)) {
+        if (!$user || !Hash::check($this->password, $user->password)) {
             RateLimiter::hit($this->throttleKey());
 
             throw ValidationException::withMessages([
