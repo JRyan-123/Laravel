@@ -1,7 +1,7 @@
 <div class="row g-4">
     @forelse($products as $product)
     <div class="col-6 col-xl-4">
-        <div class="product-card" >
+        <div class="product-card border shadow">
             <div class="product-image">
                 <img src="{{ asset('storage/' . optional($product->images->get(0))->image_path ?? 'placeholder.jpg') }}" class="main-image img-fluid" alt="Product">
                 <img src="{{ asset('storage/' . optional($product->images->get(1))->image_path ?? 'placeholder.jpg') }}" class="hover-image img-fluid" alt="Product Variant">
@@ -22,7 +22,7 @@
                     <a href="">{{ $product->product_name }}</a>
                 </h4>
                 <div class="product-meta">
-                    <div class="product-price">{{ $product->regular_price }}</div>
+                    <div class="product-price">₱{{ $product->regular_price }}</div>
                     <div class="product-rating">
                         <i class="bi bi-star-fill"></i>
                         4.8 <span>(42)</span>

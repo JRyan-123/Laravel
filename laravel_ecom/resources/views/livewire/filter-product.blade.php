@@ -1,41 +1,35 @@
   <!-- Product Categories Widget -->
     <div class="product-categories-widget widget-item">
 
-        <h3 class="widget-title" wire:click="selectCategory(null)" style="cursor:pointer; ">Categories</h3>
+        <h3 class="widget-title" wire:click="selectCategory(null)" style="cursor:pointer; ">
+        {{ session('categoryId') ? 'All Products': 'Categories'}}</h3>
       
           <div class="tab-pane">
             <div class="category-grid">
-
+                <ul class="my-3 list-unstyled">  
                 @foreach($categories as $category)
-                   <div   style="cursor:pointer;opacity:.7;" 
-                          wire:click='{{ $selectedCategory ? "selectCategory(null)" : "selectCategory($category->id)" }}'
-                           >
-                        
-                        <h6 class="category-column p-2 rounded cursor-pointer {{ $selectedCategory == $category->id ? 'bg-dark text-white' : '' }}" >
-                            {{ $category->category_name. $selectedCategory. $category->id }}</h6>
-                       
-                      </div>
-
+                  <li style="cursor:pointer;opacity:.7;" 
+                        wire:click='selectCategory({{$category->id}})'
+                        class="text-decoration-none category-column p-2 mb-2 rounded cursor-pointer 
+                               {{ $categoryId == $category->id ? 'bg-dark text-white' : '' }}">
+                        {{ $category->category_name }}
+                    </li>
                 
-                @if($selectedCategory === $category->id && $category->subcategories->count())
+               @if($categoryId === $category->id)
                     <ul class="ms-3">
                         @foreach($category->subcategories as $subcategory)
-                            <div 
-                                
-                                class="p-2   rounded hover:bg-gray-100 {{ $selectedSubcategory == $subcategory->id ? 'bg-dark text-white' : '' }}" style="cursor:pointer;"
-                                 wire:click="selectSubcategory({{ $subcategory->id }})"
-                                 >
+                            <li class="p-2 rounded {{ $subcategoryId == $subcategory->id ? 'bg-dark text-white' : 'hover:bg-light' }}" 
+                                wire:click="selectSubcategory({{ $subcategory->id }})" 
+                                style="cursor:pointer;">
                                 {{ $subcategory->subcategory_name }}
-                            </div>
-                           
-                          
+                            </li>   
                         @endforeach
                     </ul>
                 @endif
-            
+                
         @endforeach
            
-
+    </ul>
           
 
               </div>

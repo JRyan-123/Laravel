@@ -7,23 +7,36 @@ use App\Models\Category;
 
 class FilterProduct extends Component
 {
-    public $selectedCategory = null;
-    public $selectedSubcategory = null;
+    public $categoryId      = null;
+    public $subcategoryId   = null;
+    
+    protected $listeners = ['filterUpdated' => 'refreshFromSession'];
 
-    public function selectCategory($categoryId)
+    public function mount()
     {
-            $this->selectedCategory = $categoryId;
-            $this->selectedSubcategory = null;
-
-        $this->dispatch('categoryUpdated', $this->selectedCategory);
+        $this->refreshFromSession();
     }
 
-    public function selectSubcategory($subcategoryId)
+    public function refreshFromSession()
     {
-       
-            $this->selectedSubcategory = $subcategoryId;
-       
-        $this->dispatch('subcategoryUpdated', $this->selectedSubcategory);
+        $this->categoryId = session('categoryId', null);
+        $this->subcategoryId = session('subcategoryId', null);
+    }
+    public function selectCategory($id)
+    {
+        $this->categoryId = $id;
+        $this->subcategoryId = null; 
+        session(['categoryId' => $id, 'subcategoryId' => null]);
+        $this->dispatch('categoryUpdated');
+        $this->dispatch('filterUpdated');
+    }
+
+    public function selectSubcategory($id)
+    {
+        $this->subcategoryId = $id;
+        session(['subcategoryId' => $id]);
+        $this->dispatch('subcategoryUpdated');
+        $this->dispatch('filterUpdated');
     }
 
     public function render()
