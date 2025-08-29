@@ -35,7 +35,6 @@ class ListProduct extends Component
         $this->subcategoryId = session('subcategoryId', null);
         $this->minPrice = session('minPrice', null);
         $this->maxPrice = session('maxPrice', null);
-        $this->maxPrice = session('maxPrice', null);
         $this->keyword = session('keyword', null);
 
         $this->resetPage(); // reset pagination when filters change
@@ -62,8 +61,10 @@ class ListProduct extends Component
         }
 
         if (!empty($this->keyword)) {
-            $query->where('product_name', 'like', '%' . $this->keyword . '%')
-                ->orWhere('description', 'like', '%' . $this->keyword . '%');
+              $query->where(function ($q) {
+                    $q->where('product_name', 'like', '%' . $this->keyword . '%')
+                      ->orWhere('description', 'like', '%' . $this->keyword . '%');
+                });
         }
         return view('livewire.list-product', [
             'products' => $query->paginate(12),

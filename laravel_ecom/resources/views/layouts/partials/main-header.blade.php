@@ -7,7 +7,7 @@
           <a href="index.html" class="logo d-flex align-items-center">
             <!-- Uncomment the line below if you also wish to use an image logo -->
             <!-- <img src="assets/img/logo.webp" alt=""> -->
-            <h1 class="sitename">NiceShop</h1>
+            <h1 class="sitename">SampleShop</h1>
           </a>
 
           <!-- Search -->
@@ -37,13 +37,17 @@
               </button>
               <div class="dropdown-menu">
                 <div class="dropdown-header">
-                  <h6>Welcome to <span class="sitename">FashionStore</span></h6>
+                  <h6>Welcome to <span class="sitename">Sample Store</span></h6>
                   <p class="mb-0">Access account &amp; manage orders</p>
                 </div>
                 <div class="dropdown-body">
                   <a class="dropdown-item d-flex align-items-center" href="account.html">
                     <i class="bi bi-person-circle me-2"></i>
                     <span>My Profile</span>
+                  </a>
+                  <a class="dropdown-item d-flex align-items-center" href="account.html">
+                    <i class="bi bi-cart me-2"></i>
+                    <span>My Cart</span>
                   </a>
                   <a class="dropdown-item d-flex align-items-center" href="account.html">
                     <i class="bi bi-bag-check me-2"></i>
@@ -59,8 +63,15 @@
                   </a>
                 </div>
                 <div class="dropdown-footer">
-                  <a href="register.html" class="btn btn-primary w-100 mb-2">Sign In</a>
-                  <a href="login.html" class="btn btn-outline-primary w-100">Register</a>
+                  <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+                            <div class="  d-flex gap-2">
+                            
+                              <input type="submit" class="btn btn-outline-primary w-100" value="Logout" >
+                            </div>
+                            
+                        </form>
+                  
                 </div>
               </div>
             </div>

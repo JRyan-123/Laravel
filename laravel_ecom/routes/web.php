@@ -16,12 +16,14 @@ use App\Http\Controllers\Vendor\VendorProductController;
 use App\Http\Controllers\Vendor\StoreController;
 
 use App\Http\Controllers\Customer\CustomerController;
+use App\Http\Controllers\Customer\CartController;
 
 use App\Http\Controllers\MasterCategoryController;
 use App\Http\Controllers\MasterSubcategoryController;
+use App\Http\Controllers\MasterCartController;
 
 Route::get('/', function () {
-    return view('home.index');
+    return view('customer.main');
 });
 
 Route::get('/dashboard', function () {
@@ -143,11 +145,28 @@ Route::prefix('customer')->name('customer.')->middleware('rolemanager:customer')
 
     Route::controller(CustomerController::class)->group(function() {
         Route::get('dashboard', 'index')->name('dashboard');
+        Route::get('category', 'category')->name('category');
+        Route::get('about', 'about')->name('about');
+        Route::get('contact', 'contact')->name('contact');
         Route::get('product_view', 'product_view')->name('product_view');
 
     });
     // End MAIN controller
 
+
+
+    Route::controller(CartController::class)->group(function() {
+        Route::get('cart', 'index')->name('cart');
+        Route::get('payment', 'payment')->name('payment');
+    });
+    // End cart controller
+
+
+     Route::prefix('store')->name('store.')->controller(MasterCartController::class)->group(function() {
+        Route::post('cart', 'store_cart')->name('cart');
+       
+    });
+    // End cart controller
    
 });
 // End customer
